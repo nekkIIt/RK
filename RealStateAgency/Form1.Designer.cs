@@ -92,10 +92,11 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(-1, 0);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1968, 1079);
+            tabControl1.Size = new Size(1966, 1079);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -104,7 +105,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1960, 1051);
+            tabPage1.Size = new Size(1958, 1051);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "База пропозицій";
             tabPage1.UseVisualStyleBackColor = true;
@@ -123,14 +124,14 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(groupBox1);
-            splitContainer1.Size = new Size(1954, 1045);
-            splitContainer1.SplitterDistance = 1457;
+            splitContainer1.Size = new Size(1952, 1045);
+            splitContainer1.SplitterDistance = 1455;
             splitContainer1.TabIndex = 0;
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 23);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1457, 1022);
@@ -145,11 +146,12 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1457, 23);
+            panel1.Size = new Size(1455, 23);
             panel1.TabIndex = 27;
             // 
             // btnAddOffer
             // 
+            btnAddOffer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAddOffer.Location = new Point(0, 0);
             btnAddOffer.Name = "btnAddOffer";
             btnAddOffer.Size = new Size(158, 23);
@@ -160,6 +162,7 @@
             // 
             // btnDeleteOffer
             // 
+            btnDeleteOffer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDeleteOffer.Location = new Point(310, 0);
             btnDeleteOffer.Name = "btnDeleteOffer";
             btnDeleteOffer.Size = new Size(158, 23);
@@ -170,6 +173,7 @@
             // 
             // btnEditOffer
             // 
+            btnEditOffer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEditOffer.Location = new Point(155, 0);
             btnEditOffer.Name = "btnEditOffer";
             btnEditOffer.Size = new Size(158, 23);
@@ -180,6 +184,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             groupBox1.Controls.Add(btnResetFilter);
             groupBox1.Controls.Add(btnApplyFilter);
             groupBox1.Controls.Add(label12);
@@ -204,7 +209,6 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txtFilterAddress);
             groupBox1.Controls.Add(cmbFilterDistrict);
-            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(493, 1045);
@@ -431,15 +435,15 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1960, 1051);
+            tabPage2.Size = new Size(1958, 1051);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "База попиту";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // dgvBuyers
             // 
+            dgvBuyers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvBuyers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBuyers.Dock = DockStyle.Fill;
             dgvBuyers.Location = new Point(3, 26);
             dgvBuyers.Name = "dgvBuyers";
             dgvBuyers.Size = new Size(1954, 1022);
@@ -455,11 +459,12 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1954, 23);
+            panel2.Size = new Size(1952, 23);
             panel2.TabIndex = 28;
             // 
             // btnFindMatches
             // 
+            btnFindMatches.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnFindMatches.Location = new Point(465, 0);
             btnFindMatches.Name = "btnFindMatches";
             btnFindMatches.Size = new Size(158, 23);
@@ -470,6 +475,7 @@
             // 
             // btnAddBuyer
             // 
+            btnAddBuyer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAddBuyer.Location = new Point(0, 0);
             btnAddBuyer.Name = "btnAddBuyer";
             btnAddBuyer.Size = new Size(158, 23);
@@ -480,6 +486,7 @@
             // 
             // btnDeleteBuyer
             // 
+            btnDeleteBuyer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDeleteBuyer.Location = new Point(310, 0);
             btnDeleteBuyer.Name = "btnDeleteBuyer";
             btnDeleteBuyer.Size = new Size(158, 23);
@@ -490,6 +497,7 @@
             // 
             // btnEditBuyer
             // 
+            btnEditBuyer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEditBuyer.Location = new Point(155, 0);
             btnEditBuyer.Name = "btnEditBuyer";
             btnEditBuyer.Size = new Size(158, 23);
@@ -506,8 +514,9 @@
             ClientSize = new Size(1966, 1079);
             Controls.Add(tabControl1);
             KeyPreview = true;
+            MinimumSize = new Size(800, 600);
             Name = "Form1";
-            Text = "Form1";
+            Text = "RealEstateAgency";
             KeyDown += Form1_KeyDown;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

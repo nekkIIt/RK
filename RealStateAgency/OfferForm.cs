@@ -40,6 +40,33 @@ namespace RealStateAgency
         // КНОПКА ЗБЕРЕЖЕННЯ
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtOwnerName.Text) ||
+            string.IsNullOrWhiteSpace(txtOwnerPhone.Text) ||
+            string.IsNullOrWhiteSpace(txtAddress.Text) ||
+            string.IsNullOrWhiteSpace(cmbDistrict.Text) ||
+            string.IsNullOrWhiteSpace(cmbPropertyType.Text))
+            {
+                MessageBox.Show("Будь ласка, обов'язково введіть ім'я, телефон, адресу та оберіть значення зі списків!",
+                                "Помилка заповнення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
+            
+            if (numPrice.Value == 0 || numRooms.Value == 0 || numArea.Value == 0)
+            {
+                MessageBox.Show("Ціна, кількість кімнат та площа не можуть дорівнювати нулю!",
+                                "Помилка заповнення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
+            
+            if (cmbPropertyType.Text == "Дім" && numPlotArea.Value == 0)
+            {
+                MessageBox.Show("Оскільки ви обрали тип об'єкта 'Дім', будь ласка, вкажіть площу ділянки!",
+                                "Помилка заповнення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
             // Створення нової квартири і заповнення її даними
             NewOffer = new Offer
             {

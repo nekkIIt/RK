@@ -38,6 +38,28 @@ namespace RealStateAgency
         // КНОПКА ЗБЕРЕЖЕННЯ
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+            string.IsNullOrWhiteSpace(txtPhone.Text) ||
+            string.IsNullOrWhiteSpace(cmbDistrict.Text))
+            {
+                MessageBox.Show("Будь ласка, вкажіть ім'я клієнта, телефон та бажаний район!",
+                                "Помилка заповнення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (numMaxPrice.Value == 0 || numMinRooms.Value == 0)
+            {
+                MessageBox.Show("Бюджет та мінімальна кількість кімнат мають бути більшими за нуль!",
+                                "Помилка заповнення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!chkHouse.Checked && !chkApartment.Checked)
+            {
+                MessageBox.Show("Оберіть хоча б один тип житла (Квартира або Дім)!",
+                                "Помилка заповнення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             NewBuyer = new Buyer
             {
                 ClientName = txtName.Text,

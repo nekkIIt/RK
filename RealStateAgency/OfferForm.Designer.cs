@@ -52,9 +52,12 @@
             numArea = new NumericUpDown();
             label12 = new Label();
             label13 = new Label();
+            numPlotArea = new NumericUpDown();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)numRooms).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numArea).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numPlotArea).BeginInit();
             SuspendLayout();
             // 
             // btnCancel
@@ -62,7 +65,7 @@
             btnCancel.Location = new Point(405, 381);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(176, 23);
-            btnCancel.TabIndex = 39;
+            btnCancel.TabIndex = 11;
             btnCancel.Text = "Скасувати";
             btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -71,7 +74,7 @@
             btnSave.Location = new Point(154, 381);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(176, 23);
-            btnSave.TabIndex = 38;
+            btnSave.TabIndex = 10;
             btnSave.Text = "Зберегти";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -79,7 +82,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(549, 47);
+            label9.Location = new Point(514, 47);
             label9.Name = "label9";
             label9.Size = new Size(94, 15);
             label9.TabIndex = 35;
@@ -97,7 +100,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(714, 123);
+            label7.Location = new Point(679, 123);
             label7.Name = "label7";
             label7.Size = new Size(47, 15);
             label7.TabIndex = 33;
@@ -106,7 +109,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(714, 83);
+            label6.Location = new Point(679, 83);
             label6.Name = "label6";
             label6.Size = new Size(49, 15);
             label6.TabIndex = 32;
@@ -114,24 +117,24 @@
             // 
             // numRooms
             // 
-            numRooms.Location = new Point(440, 120);
+            numRooms.Location = new Point(405, 120);
             numRooms.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             numRooms.Name = "numRooms";
             numRooms.Size = new Size(259, 23);
-            numRooms.TabIndex = 31;
+            numRooms.TabIndex = 6;
             // 
             // numPrice
             // 
-            numPrice.Location = new Point(440, 80);
+            numPrice.Location = new Point(405, 80);
             numPrice.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numPrice.Name = "numPrice";
             numPrice.Size = new Size(259, 23);
-            numPrice.TabIndex = 30;
+            numPrice.TabIndex = 5;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(352, 246);
+            label5.Location = new Point(316, 246);
             label5.Name = "label5";
             label5.Size = new Size(41, 15);
             label5.TabIndex = 29;
@@ -140,7 +143,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(352, 167);
+            label4.Location = new Point(316, 167);
             label4.Name = "label4";
             label4.Size = new Size(59, 15);
             label4.TabIndex = 28;
@@ -149,7 +152,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(352, 123);
+            label3.Location = new Point(316, 123);
             label3.Name = "label3";
             label3.Size = new Size(55, 15);
             label3.TabIndex = 27;
@@ -159,27 +162,27 @@
             // 
             txtAddress.Location = new Point(8, 288);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(322, 23);
-            txtAddress.TabIndex = 26;
+            txtAddress.Size = new Size(291, 23);
+            txtAddress.TabIndex = 4;
             // 
             // txtOwnerTelegram
             // 
             txtOwnerTelegram.Location = new Point(8, 159);
             txtOwnerTelegram.Name = "txtOwnerTelegram";
-            txtOwnerTelegram.Size = new Size(322, 23);
-            txtOwnerTelegram.TabIndex = 25;
+            txtOwnerTelegram.Size = new Size(291, 23);
+            txtOwnerTelegram.TabIndex = 2;
             // 
             // txtOwnerPhone
             // 
             txtOwnerPhone.Location = new Point(8, 120);
             txtOwnerPhone.Name = "txtOwnerPhone";
-            txtOwnerPhone.Size = new Size(322, 23);
-            txtOwnerPhone.TabIndex = 24;
+            txtOwnerPhone.Size = new Size(291, 23);
+            txtOwnerPhone.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(352, 83);
+            label2.Location = new Point(316, 83);
             label2.Name = "label2";
             label2.Size = new Size(28, 15);
             label2.TabIndex = 23;
@@ -198,17 +201,19 @@
             // 
             txtOwnerName.Location = new Point(8, 80);
             txtOwnerName.Name = "txtOwnerName";
-            txtOwnerName.Size = new Size(322, 23);
-            txtOwnerName.TabIndex = 21;
+            txtOwnerName.Size = new Size(291, 23);
+            txtOwnerName.TabIndex = 0;
             // 
             // cmbPropertyType
             // 
+            cmbPropertyType.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPropertyType.FormattingEnabled = true;
             cmbPropertyType.Items.AddRange(new object[] { "Квартира", "Дім" });
-            cmbPropertyType.Location = new Point(440, 198);
+            cmbPropertyType.Location = new Point(405, 206);
             cmbPropertyType.Name = "cmbPropertyType";
             cmbPropertyType.Size = new Size(259, 23);
-            cmbPropertyType.TabIndex = 40;
+            cmbPropertyType.TabIndex = 8;
+            cmbPropertyType.SelectedIndexChanged += cmbPropertyType_SelectedIndexChanged_1;
             // 
             // label10
             // 
@@ -221,17 +226,18 @@
             // 
             // cmbDistrict
             // 
+            cmbDistrict.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDistrict.FormattingEnabled = true;
             cmbDistrict.Items.AddRange(new object[] { "Шевченківський", "Київський", "Салтівський", "Холодногірський", "Новобаварський", "Основ'янський", "Слобідський", "Індустріальний", "Немишлянський" });
             cmbDistrict.Location = new Point(8, 243);
             cmbDistrict.Name = "cmbDistrict";
-            cmbDistrict.Size = new Size(322, 23);
-            cmbDistrict.TabIndex = 42;
+            cmbDistrict.Size = new Size(291, 23);
+            cmbDistrict.TabIndex = 3;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(352, 291);
+            label11.Location = new Point(316, 291);
             label11.Name = "label11";
             label11.Size = new Size(46, 15);
             label11.TabIndex = 43;
@@ -239,16 +245,16 @@
             // 
             // numArea
             // 
-            numArea.Location = new Point(440, 159);
+            numArea.Location = new Point(405, 159);
             numArea.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numArea.Name = "numArea";
             numArea.Size = new Size(259, 23);
-            numArea.TabIndex = 44;
+            numArea.TabIndex = 7;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(714, 162);
+            label12.Location = new Point(679, 162);
             label12.Name = "label12";
             label12.Size = new Size(47, 15);
             label12.TabIndex = 45;
@@ -257,11 +263,29 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(714, 201);
+            label13.Location = new Point(679, 209);
             label13.Name = "label13";
             label13.Size = new Size(27, 15);
             label13.TabIndex = 46;
             label13.Text = "Тип";
+            // 
+            // numPlotArea
+            // 
+            numPlotArea.Location = new Point(405, 246);
+            numPlotArea.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numPlotArea.Name = "numPlotArea";
+            numPlotArea.Size = new Size(259, 23);
+            numPlotArea.TabIndex = 9;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(679, 251);
+            label14.Name = "label14";
+            label14.Size = new Size(92, 15);
+            label14.TabIndex = 48;
+            label14.Text = "Площа ділянки";
+            label14.Click += label14_Click;
             // 
             // OfferForm
             // 
@@ -270,6 +294,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancel;
             ClientSize = new Size(800, 450);
+            Controls.Add(label14);
+            Controls.Add(numPlotArea);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(numArea);
@@ -294,11 +320,14 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtOwnerName);
+            KeyPreview = true;
             Name = "OfferForm";
             Text = "OfferForm";
+            KeyDown += OfferForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)numRooms).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)numArea).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numPlotArea).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -329,5 +358,7 @@
         private NumericUpDown numArea;
         private Label label12;
         private Label label13;
+        private NumericUpDown numPlotArea;
+        private Label label14;
     }
 }

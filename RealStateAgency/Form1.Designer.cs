@@ -37,8 +37,8 @@
             btnDeleteOffer = new Button();
             btnEditOffer = new Button();
             groupBox1 = new GroupBox();
-            button2 = new Button();
-            button1 = new Button();
+            btnResetFilter = new Button();
+            btnApplyFilter = new Button();
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
@@ -47,20 +47,20 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            numericUpDown6 = new NumericUpDown();
-            numericUpDown5 = new NumericUpDown();
-            numericUpDown4 = new NumericUpDown();
-            numericUpDown3 = new NumericUpDown();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
+            numFilterAreaTo = new NumericUpDown();
+            numFilterAreaFrom = new NumericUpDown();
+            numFilterRoomsTo = new NumericUpDown();
+            numFilterRoomsFrom = new NumericUpDown();
+            chkFilterHouse = new CheckBox();
+            chkFilterApartment = new CheckBox();
             label4 = new Label();
             label3 = new Label();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            numFilterPriceTo = new NumericUpDown();
+            numFilterPriceFrom = new NumericUpDown();
             label2 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            txtFilterAddress = new TextBox();
+            cmbFilterDistrict = new ComboBox();
             tabPage2 = new TabPage();
             dgvBuyers = new DataGridView();
             panel2 = new Panel();
@@ -77,12 +77,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterAreaTo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterAreaFrom).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterRoomsTo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterRoomsFrom).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterPriceTo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterPriceFrom).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBuyers).BeginInit();
             panel2.SuspendLayout();
@@ -135,6 +135,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1457, 1022);
             dataGridView1.TabIndex = 0;
+            dataGridView1.TabStop = false;
             // 
             // panel1
             // 
@@ -152,7 +153,7 @@
             btnAddOffer.Location = new Point(0, 0);
             btnAddOffer.Name = "btnAddOffer";
             btnAddOffer.Size = new Size(158, 23);
-            btnAddOffer.TabIndex = 26;
+            btnAddOffer.TabIndex = 0;
             btnAddOffer.Text = "Додати";
             btnAddOffer.UseVisualStyleBackColor = true;
             btnAddOffer.Click += btnAddOffer_Click;
@@ -162,7 +163,7 @@
             btnDeleteOffer.Location = new Point(310, 0);
             btnDeleteOffer.Name = "btnDeleteOffer";
             btnDeleteOffer.Size = new Size(158, 23);
-            btnDeleteOffer.TabIndex = 24;
+            btnDeleteOffer.TabIndex = 2;
             btnDeleteOffer.Text = "Видалити";
             btnDeleteOffer.UseVisualStyleBackColor = true;
             btnDeleteOffer.Click += btnDeleteOffer_Click;
@@ -172,15 +173,15 @@
             btnEditOffer.Location = new Point(155, 0);
             btnEditOffer.Name = "btnEditOffer";
             btnEditOffer.Size = new Size(158, 23);
-            btnEditOffer.TabIndex = 25;
+            btnEditOffer.TabIndex = 1;
             btnEditOffer.Text = "Редагувати";
             btnEditOffer.UseVisualStyleBackColor = true;
             btnEditOffer.Click += btnEditOffer_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btnResetFilter);
+            groupBox1.Controls.Add(btnApplyFilter);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label10);
@@ -189,20 +190,20 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(numericUpDown6);
-            groupBox1.Controls.Add(numericUpDown5);
-            groupBox1.Controls.Add(numericUpDown4);
-            groupBox1.Controls.Add(numericUpDown3);
-            groupBox1.Controls.Add(checkBox2);
-            groupBox1.Controls.Add(checkBox1);
+            groupBox1.Controls.Add(numFilterAreaTo);
+            groupBox1.Controls.Add(numFilterAreaFrom);
+            groupBox1.Controls.Add(numFilterRoomsTo);
+            groupBox1.Controls.Add(numFilterRoomsFrom);
+            groupBox1.Controls.Add(chkFilterHouse);
+            groupBox1.Controls.Add(chkFilterApartment);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(numericUpDown2);
-            groupBox1.Controls.Add(numericUpDown1);
+            groupBox1.Controls.Add(numFilterPriceTo);
+            groupBox1.Controls.Add(numFilterPriceFrom);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(txtFilterAddress);
+            groupBox1.Controls.Add(cmbFilterDistrict);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
@@ -210,25 +211,26 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Фільтри";
-            groupBox1.Enter += groupBox1_Enter;
             // 
-            // button2
+            // btnResetFilter
             // 
-            button2.Location = new Point(22, 808);
-            button2.Name = "button2";
-            button2.Size = new Size(158, 23);
-            button2.TabIndex = 23;
-            button2.Text = "Скинути";
-            button2.UseVisualStyleBackColor = true;
+            btnResetFilter.Location = new Point(22, 808);
+            btnResetFilter.Name = "btnResetFilter";
+            btnResetFilter.Size = new Size(158, 23);
+            btnResetFilter.TabIndex = 11;
+            btnResetFilter.Text = "Скинути";
+            btnResetFilter.UseVisualStyleBackColor = true;
+            btnResetFilter.Click += btnResetFilter_Click;
             // 
-            // button1
+            // btnApplyFilter
             // 
-            button1.Location = new Point(22, 762);
-            button1.Name = "button1";
-            button1.Size = new Size(158, 23);
-            button1.TabIndex = 22;
-            button1.Text = "Застосувати зміни";
-            button1.UseVisualStyleBackColor = true;
+            btnApplyFilter.Location = new Point(22, 762);
+            btnApplyFilter.Name = "btnApplyFilter";
+            btnApplyFilter.Size = new Size(158, 23);
+            btnApplyFilter.TabIndex = 10;
+            btnApplyFilter.Text = "Застосувати зміни";
+            btnApplyFilter.UseVisualStyleBackColor = true;
+            btnApplyFilter.Click += btnApplyFilter_Click;
             // 
             // label12
             // 
@@ -292,7 +294,6 @@
             label6.Size = new Size(22, 15);
             label6.TabIndex = 15;
             label6.Text = "До";
-            label6.Click += label6_Click;
             // 
             // label5
             // 
@@ -303,53 +304,57 @@
             label5.TabIndex = 14;
             label5.Text = "Від";
             // 
-            // numericUpDown6
+            // numFilterAreaTo
             // 
-            numericUpDown6.Location = new Point(22, 539);
-            numericUpDown6.Name = "numericUpDown6";
-            numericUpDown6.Size = new Size(261, 23);
-            numericUpDown6.TabIndex = 13;
+            numFilterAreaTo.Location = new Point(22, 539);
+            numFilterAreaTo.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numFilterAreaTo.Name = "numFilterAreaTo";
+            numFilterAreaTo.Size = new Size(261, 23);
+            numFilterAreaTo.TabIndex = 7;
             // 
-            // numericUpDown5
+            // numFilterAreaFrom
             // 
-            numericUpDown5.Location = new Point(22, 488);
-            numericUpDown5.Name = "numericUpDown5";
-            numericUpDown5.Size = new Size(261, 23);
-            numericUpDown5.TabIndex = 12;
+            numFilterAreaFrom.Location = new Point(22, 488);
+            numFilterAreaFrom.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numFilterAreaFrom.Name = "numFilterAreaFrom";
+            numFilterAreaFrom.Size = new Size(261, 23);
+            numFilterAreaFrom.TabIndex = 6;
             // 
-            // numericUpDown4
+            // numFilterRoomsTo
             // 
-            numericUpDown4.Location = new Point(22, 393);
-            numericUpDown4.Name = "numericUpDown4";
-            numericUpDown4.Size = new Size(261, 23);
-            numericUpDown4.TabIndex = 11;
+            numFilterRoomsTo.Location = new Point(22, 393);
+            numFilterRoomsTo.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numFilterRoomsTo.Name = "numFilterRoomsTo";
+            numFilterRoomsTo.Size = new Size(261, 23);
+            numFilterRoomsTo.TabIndex = 5;
             // 
-            // numericUpDown3
+            // numFilterRoomsFrom
             // 
-            numericUpDown3.Location = new Point(22, 335);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(261, 23);
-            numericUpDown3.TabIndex = 10;
+            numFilterRoomsFrom.Location = new Point(22, 335);
+            numFilterRoomsFrom.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numFilterRoomsFrom.Name = "numFilterRoomsFrom";
+            numFilterRoomsFrom.Size = new Size(261, 23);
+            numFilterRoomsFrom.TabIndex = 4;
             // 
-            // checkBox2
+            // chkFilterHouse
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(237, 628);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(46, 19);
-            checkBox2.TabIndex = 9;
-            checkBox2.Text = "Дім";
-            checkBox2.UseVisualStyleBackColor = true;
+            chkFilterHouse.AutoSize = true;
+            chkFilterHouse.Location = new Point(237, 628);
+            chkFilterHouse.Name = "chkFilterHouse";
+            chkFilterHouse.Size = new Size(46, 19);
+            chkFilterHouse.TabIndex = 9;
+            chkFilterHouse.Text = "Дім";
+            chkFilterHouse.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // chkFilterApartment
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(22, 628);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(77, 19);
-            checkBox1.TabIndex = 8;
-            checkBox1.Text = "Квартира";
-            checkBox1.UseVisualStyleBackColor = true;
+            chkFilterApartment.AutoSize = true;
+            chkFilterApartment.Location = new Point(22, 628);
+            chkFilterApartment.Name = "chkFilterApartment";
+            chkFilterApartment.Size = new Size(77, 19);
+            chkFilterApartment.TabIndex = 8;
+            chkFilterApartment.Text = "Квартира";
+            chkFilterApartment.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -369,20 +374,21 @@
             label3.TabIndex = 6;
             label3.Text = "Від";
             // 
-            // numericUpDown2
+            // numFilterPriceTo
             // 
-            numericUpDown2.Location = new Point(22, 231);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(261, 23);
-            numericUpDown2.TabIndex = 5;
+            numFilterPriceTo.Location = new Point(22, 231);
+            numFilterPriceTo.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numFilterPriceTo.Name = "numFilterPriceTo";
+            numFilterPriceTo.Size = new Size(261, 23);
+            numFilterPriceTo.TabIndex = 3;
             // 
-            // numericUpDown1
+            // numFilterPriceFrom
             // 
-            numericUpDown1.Location = new Point(22, 178);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(261, 23);
-            numericUpDown1.TabIndex = 4;
-            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
+            numFilterPriceFrom.Location = new Point(22, 178);
+            numFilterPriceFrom.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numFilterPriceFrom.Name = "numFilterPriceFrom";
+            numFilterPriceFrom.Size = new Size(261, 23);
+            numFilterPriceFrom.TabIndex = 2;
             // 
             // label2
             // 
@@ -401,22 +407,22 @@
             label1.Size = new Size(41, 15);
             label1.TabIndex = 2;
             label1.Text = "Район";
-            label1.Click += label1_Click;
             // 
-            // textBox1
+            // txtFilterAddress
             // 
-            textBox1.Location = new Point(22, 109);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(261, 23);
-            textBox1.TabIndex = 1;
+            txtFilterAddress.Location = new Point(22, 109);
+            txtFilterAddress.Name = "txtFilterAddress";
+            txtFilterAddress.Size = new Size(261, 23);
+            txtFilterAddress.TabIndex = 1;
             // 
-            // comboBox1
+            // cmbFilterDistrict
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(22, 60);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(261, 23);
-            comboBox1.TabIndex = 0;
+            cmbFilterDistrict.FormattingEnabled = true;
+            cmbFilterDistrict.Items.AddRange(new object[] { "Шевченківський", "Київський", "Салтівський", "Холодногірський", "Новобаварський", "Основ'янський", "Слобідський", "Індустріальний", "Немишлянський" });
+            cmbFilterDistrict.Location = new Point(22, 60);
+            cmbFilterDistrict.Name = "cmbFilterDistrict";
+            cmbFilterDistrict.Size = new Size(261, 23);
+            cmbFilterDistrict.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -438,6 +444,7 @@
             dgvBuyers.Name = "dgvBuyers";
             dgvBuyers.Size = new Size(1954, 1022);
             dgvBuyers.TabIndex = 29;
+            dgvBuyers.TabStop = false;
             // 
             // panel2
             // 
@@ -456,7 +463,7 @@
             btnFindMatches.Location = new Point(465, 0);
             btnFindMatches.Name = "btnFindMatches";
             btnFindMatches.Size = new Size(158, 23);
-            btnFindMatches.TabIndex = 27;
+            btnFindMatches.TabIndex = 3;
             btnFindMatches.Text = "Підібрати варіанти";
             btnFindMatches.UseVisualStyleBackColor = true;
             btnFindMatches.Click += btnFindMatches_Click;
@@ -466,7 +473,7 @@
             btnAddBuyer.Location = new Point(0, 0);
             btnAddBuyer.Name = "btnAddBuyer";
             btnAddBuyer.Size = new Size(158, 23);
-            btnAddBuyer.TabIndex = 26;
+            btnAddBuyer.TabIndex = 0;
             btnAddBuyer.Text = "Додати";
             btnAddBuyer.UseVisualStyleBackColor = true;
             btnAddBuyer.Click += btnAddBuyer_Click;
@@ -476,7 +483,7 @@
             btnDeleteBuyer.Location = new Point(310, 0);
             btnDeleteBuyer.Name = "btnDeleteBuyer";
             btnDeleteBuyer.Size = new Size(158, 23);
-            btnDeleteBuyer.TabIndex = 24;
+            btnDeleteBuyer.TabIndex = 2;
             btnDeleteBuyer.Text = "Видалити";
             btnDeleteBuyer.UseVisualStyleBackColor = true;
             btnDeleteBuyer.Click += btnDeleteBuyer_Click;
@@ -486,20 +493,22 @@
             btnEditBuyer.Location = new Point(155, 0);
             btnEditBuyer.Name = "btnEditBuyer";
             btnEditBuyer.Size = new Size(158, 23);
-            btnEditBuyer.TabIndex = 25;
+            btnEditBuyer.TabIndex = 1;
             btnEditBuyer.Text = "Редагувати";
             btnEditBuyer.UseVisualStyleBackColor = true;
             btnEditBuyer.Click += btnEditBuyer_Click;
             // 
             // Form1
             // 
+            AcceptButton = btnApplyFilter;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1966, 1079);
             Controls.Add(tabControl1);
+            KeyPreview = true;
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
+            KeyDown += Form1_KeyDown;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
@@ -510,12 +519,12 @@
             panel1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterAreaTo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterAreaFrom).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterRoomsTo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterRoomsFrom).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterPriceTo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numFilterPriceFrom).EndInit();
             tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvBuyers).EndInit();
             panel2.ResumeLayout(false);
@@ -530,30 +539,30 @@
         private SplitContainer splitContainer1;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cmbFilterDistrict;
+        private TextBox txtFilterAddress;
         private Label label1;
         private Label label2;
-        private NumericUpDown numericUpDown1;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
+        private NumericUpDown numFilterPriceFrom;
+        private CheckBox chkFilterHouse;
+        private CheckBox chkFilterApartment;
         private Label label4;
         private Label label3;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown numFilterPriceTo;
         private Label label8;
         private Label label7;
         private Label label6;
         private Label label5;
-        private NumericUpDown numericUpDown6;
-        private NumericUpDown numericUpDown5;
-        private NumericUpDown numericUpDown4;
-        private NumericUpDown numericUpDown3;
+        private NumericUpDown numFilterAreaTo;
+        private NumericUpDown numFilterAreaFrom;
+        private NumericUpDown numFilterRoomsTo;
+        private NumericUpDown numFilterRoomsFrom;
         private Label label12;
         private Label label11;
         private Label label10;
         private Label label9;
-        private Button button2;
-        private Button button1;
+        private Button btnResetFilter;
+        private Button btnApplyFilter;
         private Button btnEditOffer;
         private Button btnDeleteOffer;
         private Button btnAddOffer;

@@ -4,17 +4,19 @@ using System.Text;
 
 namespace RealStateAgency
 {
-    /// <summary>
-    /// Клас, що описує клієнта-покупця та його вимоги до нерухомості (база попиту)
-    /// </summary>
+
+    // Клас клієнта-покупця 
+
     public class Buyer
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Id { get; set; } = Guid.NewGuid().ToString(); // Айді
 
+        // КОНТАКТНІ ДАНІ
         public string ClientName { get; set; }    // Ім'я покупця
         public string ClientPhone { get; set; }   // Телефон
         public string Telegram { get; set; }      // Нік у Telegram
 
+        // БАЖАНА ХАРАКТЕРИСТИКА
         public string DesiredDistrict { get; set; } // Бажаний район
         public decimal MaxPrice { get; set; }       // Максимальний бюджет
         public int MinRooms { get; set; }           // Мінімальна кількість кімнат

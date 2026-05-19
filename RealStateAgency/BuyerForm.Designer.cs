@@ -81,14 +81,14 @@
             txtPhone.Location = new Point(12, 141);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(322, 23);
-            txtPhone.TabIndex = 4;
+            txtPhone.TabIndex = 1;
             // 
             // txtTelegram
             // 
             txtTelegram.Location = new Point(12, 206);
             txtTelegram.Name = "txtTelegram";
             txtTelegram.Size = new Size(322, 23);
-            txtTelegram.TabIndex = 5;
+            txtTelegram.TabIndex = 2;
             // 
             // label3
             // 
@@ -123,7 +123,7 @@
             numMaxPrice.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numMaxPrice.Name = "numMaxPrice";
             numMaxPrice.Size = new Size(259, 23);
-            numMaxPrice.TabIndex = 11;
+            numMaxPrice.TabIndex = 4;
             // 
             // numMinRooms
             // 
@@ -131,7 +131,7 @@
             numMinRooms.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             numMinRooms.Name = "numMinRooms";
             numMinRooms.Size = new Size(259, 23);
-            numMinRooms.TabIndex = 12;
+            numMinRooms.TabIndex = 5;
             // 
             // label6
             // 
@@ -175,7 +175,7 @@
             chkApartment.Location = new Point(444, 271);
             chkApartment.Name = "chkApartment";
             chkApartment.Size = new Size(77, 19);
-            chkApartment.TabIndex = 17;
+            chkApartment.TabIndex = 6;
             chkApartment.Text = "Квартира";
             chkApartment.UseVisualStyleBackColor = true;
             // 
@@ -185,7 +185,7 @@
             chkHouse.Location = new Point(657, 271);
             chkHouse.Name = "chkHouse";
             chkHouse.Size = new Size(46, 19);
-            chkHouse.TabIndex = 18;
+            chkHouse.TabIndex = 7;
             chkHouse.Text = "Дім";
             chkHouse.UseVisualStyleBackColor = true;
             // 
@@ -194,7 +194,7 @@
             btnSave.Location = new Point(158, 381);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(176, 23);
-            btnSave.TabIndex = 19;
+            btnSave.TabIndex = 8;
             btnSave.Text = "Зберегти";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -204,19 +204,20 @@
             btnCancel.Location = new Point(409, 381);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(176, 23);
-            btnCancel.TabIndex = 20;
+            btnCancel.TabIndex = 9;
             btnCancel.Text = "Скасувати";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
             // cmbDistrict
             // 
+            cmbDistrict.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDistrict.FormattingEnabled = true;
             cmbDistrict.Items.AddRange(new object[] { "Шевченківський", "Київський", "Салтівський", "Холодногірський", "Новобаварський", "Основ'янський", "Слобідський", "Індустріальний", "Немишлянський" });
             cmbDistrict.Location = new Point(12, 267);
             cmbDistrict.Name = "cmbDistrict";
             cmbDistrict.Size = new Size(322, 23);
-            cmbDistrict.TabIndex = 43;
+            cmbDistrict.TabIndex = 3;
             // 
             // BuyerForm
             // 
@@ -244,8 +245,10 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtName);
+            KeyPreview = true;
             Name = "BuyerForm";
             Text = "BuyerForm";
+            KeyDown += BuyerForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)numMaxPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)numMinRooms).EndInit();
             ResumeLayout(false);

@@ -1,10 +1,11 @@
 using System.ComponentModel;
-using System.IO;          // Для работы с файлами
-using System.Text.Json;    // Для превращения объектов в текст (сериализация)
+using System.IO;          
+using System.Text.Json;    
 namespace RealStateAgency
 {
     public partial class Form1 : Form
     {
+        // ТАБЛИЦІ ПРОПОЗИЦІЙ І ПОПИТУ
         BindingList<Offer> offersList = new BindingList<Offer>();
         BindingList<Buyer> buyersList = new BindingList<Buyer>();
         public Form1()
@@ -15,8 +16,9 @@ namespace RealStateAgency
             dataGridView1.DataSource = offersList;
             dgvBuyers.DataSource = buyersList;
 
-            // --- НАЛАШТУВАННЯ ТАБЛИЦІ ПРОПОЗИЦІЙ (dataGridView1) ---
-            dataGridView1.Columns["Id"].Visible = false; // Ховаємо страшний ID
+            // НАЛАШТУВАННЯ ВИГЛЯДУ ТАБЛИЦІ ПРОПОЗИЦІЙ dataGridView1
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.Columns["Id"].Visible = false; 
             dataGridView1.Columns["District"].HeaderText = "Район";
             dataGridView1.Columns["Address"].HeaderText = "Адреса";
             dataGridView1.Columns["Price"].HeaderText = "Ціна ($)";
@@ -26,8 +28,9 @@ namespace RealStateAgency
             dataGridView1.Columns["OwnerName"].HeaderText = "Ім'я продавця";
             dataGridView1.Columns["OwnerPhone"].HeaderText = "Телефон";
 
-            // --- НАЛАШТУВАННЯ ТАБЛИЦІ ПОКУПЦІВ (dgvBuyers) ---
-            dgvBuyers.Columns["Id"].Visible = false; // Ховаємо страшний ID
+            // НАЛАШТУВАННЯ ВИГЛЯДУ ТАБЛИЦІ ПОКУПЦІВ dgvBuyers
+            dgvBuyers.AllowUserToAddRows = false;
+            dgvBuyers.Columns["Id"].Visible = false;
             dgvBuyers.Columns["ClientName"].HeaderText = "Ім'я клієнта";
             dgvBuyers.Columns["ClientPhone"].HeaderText = "Телефон";
             dgvBuyers.Columns["Telegram"].HeaderText = "Телеграм";
@@ -37,117 +40,84 @@ namespace RealStateAgency
             dgvBuyers.Columns["WantsHouse"].HeaderText = "Шукає дім";
             dgvBuyers.Columns["WantsApartment"].HeaderText = "Шукає квартиру";
             dataGridView1.Columns["OwnerTelegram"].HeaderText = "Телеграм";
+            dataGridView1.Columns["PlotArea"].HeaderText = "Ділянка (сотки)";
 
 
             LoadData();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        // КНОПКА ДОДАВАННЯ ПОКУПЦЯ
         private void btnAddBuyer_Click(object sender, EventArgs e)
         {
-            // 1. Створюємо екземпляр нашого нового віконця
+           
             BuyerForm addForm = new BuyerForm();
 
-            // 2. Відкриваємо його у режимі діалогу (щоб не можна було клікати повз нього)
-            // і відразу перевіряємо, чи натиснув користувач "Зберегти" (DialogResult.OK)
+
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                // 3. Якщо натиснув згоду - беремо готового клієнта з форми 
-                // і додаємо його в наш "розумний список"
                 buyersList.Add(addForm.NewBuyer);
             }
         }
-
+        
+        // КНОПКА ВИДАЛЕННЯ ПОКУПЦЯ
         private void btnDeleteBuyer_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи взагалі вибрана якась строчка (щоб програма не вилетіла)
             if (dgvBuyers.CurrentRow != null)
             {
-                // Викликаємо віконце з питанням (вимога методички)
+                // Повторне підтвердження
                 DialogResult result = MessageBox.Show(
                     "Ви впевнені, що хочете видалити цього клієнта?",
                     "Підтвердження видалення",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
-                // Якщо риєлтор натиснув "Так"
+
                 if (result == DialogResult.Yes)
                 {
-                    // Дізнаємось номер вибраної строчки і видаляємо її зі списку
                     int index = dgvBuyers.CurrentRow.Index;
                     buyersList.RemoveAt(index);
                 }
             }
         }
 
+        // КНОПКА РЕДАГУВАННЯ ПОКУПЦЯ 
         private void btnEditBuyer_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи вибрана строчка
             if (dgvBuyers.CurrentRow != null)
             {
                 // Беремо номер вибраної строчки і дістаємо нашого клієнта зі списку
                 int index = dgvBuyers.CurrentRow.Index;
                 Buyer selectedBuyer = buyersList[index];
 
-                // Відкриваємо форму, але використовуємо наш НОВИЙ конструктор (передаємо туди клієнта)
+                // Відкриваємо форму
                 BuyerForm editForm = new BuyerForm(selectedBuyer);
 
                 // Якщо риєлтор щось змінив і натиснув "Зберегти"
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     // Просто замінюємо старого клієнта в списку на оновленого
-                    // Таблиця сама миттєво перемалюється!
                     buyersList[index] = editForm.NewBuyer;
                 }
             }
         }
 
+        // КНОПКА ДОДАВАННЯ ЖИТЛА
         private void btnAddOffer_Click(object sender, EventArgs e)
         {
-            // Створюємо нове вікно продавця
+
             OfferForm addForm = new OfferForm();
 
-            // Якщо риєлтор зберіг дані
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                // Додаємо нову квартиру в наш список (таблиця оновиться сама)
                 offersList.Add(addForm.NewOffer);
                 SaveData();
             }
         }
 
+        // КНОПКА РЕДАГУВАННЯ ПОКУПЦЯ 
         private void btnEditOffer_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи виділена якась квартира в таблиці
             if (dataGridView1.CurrentRow != null)
             {
                 // Беремо номер виділеної строчки
@@ -158,22 +128,22 @@ namespace RealStateAgency
                 // Відкриваємо вікно редагування, передаючи туди старі дані
                 OfferForm editForm = new OfferForm(selectedOffer);
 
-                // Якщо риєлтор натиснув "Зберегти" після змін
+
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    // Замінюємо стару квартиру на нову
                     offersList[index] = editForm.NewOffer;
                     SaveData();
                 }
             }
         }
 
+        // КНОПКА ВИДАЛЕННЯ ПОКУПЦЯ
         private void btnDeleteOffer_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи виділена квартира
+
             if (dataGridView1.CurrentRow != null)
             {
-                // Питаємо підтвердження (вимога методички)
+                // Підтвердження
                 DialogResult result = MessageBox.Show(
                     "Ви впевнені, що хочете видалити цю пропозицію?",
                     "Підтвердження видалення",
@@ -190,12 +160,12 @@ namespace RealStateAgency
             }
 
         }
-        // Метод для збереження всіх даних у файли
+        // МЕТОД ЗБЕРЕЖЕННЯ ДАНИХ У ФАЙЛИ
         private void SaveData()
         {
             try
             {
-                // Налаштування, щоб JSON був гарним (з відступами), а не в один рядок
+                // Налаштування щоб JSON був з відступами а не в один рядок
                 var options = new JsonSerializerOptions { WriteIndented = true };
 
                 // Зберігаємо список пропозицій
@@ -212,11 +182,11 @@ namespace RealStateAgency
             }
         }
 
-        // Метод для завантаження даних при старті програми
+        // МЕТОД ДЛЯ ЗАВАНТАЖЕННЯ ДАНИХ У ПРОГРАМУ ПРИ СТАРТІ
         private void LoadData()
         {
             try
-            {
+            {   //Завантаження продавців
                 if (File.Exists("offers.json"))
                 {
                     string json = File.ReadAllText("offers.json");
@@ -227,7 +197,7 @@ namespace RealStateAgency
                         foreach (var item in list) offersList.Add(item);
                     }
                 }
-
+                // Завантаження покупців
                 if (File.Exists("buyers.json"))
                 {
                     string json = File.ReadAllText("buyers.json");
@@ -244,57 +214,60 @@ namespace RealStateAgency
                 MessageBox.Show($"Помилка при завантаженні: {ex.Message}");
             }
         }
+        
 
+        // КНОПКА АВТОПІДБОРУ 
         private void btnFindMatches_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи вибраний покупець у таблиці
             if (dgvBuyers.CurrentRow != null)
             {
                 // Беремо вибраного клієнта
                 int index = dgvBuyers.CurrentRow.Index;
                 Buyer selectedBuyer = buyersList[index];
 
-                // Створюємо порожній список для збереження підходящих варіантів
-                List<Offer> matchedOffers = new List<Offer>();
+
+                List<Offer> matchedOffers = new List<Offer>(); //Список для підібраних варіантів
 
                 // АЛГОРИТМ ПОШУКУ: Проходимось по всій базі пропозицій (квартир)
                 foreach (Offer offer in offersList)
                 {
-                    // 1. Перевіряємо ціну (квартира дешевша або дорівнює бюджету)
+                    // Перевіряємо ціну 
                     bool priceMatch = offer.Price <= selectedBuyer.MaxPrice;
 
-                    // 2. Перевіряємо кімнати (кімнат стільки ж або більше, ніж просить клієнт)
+                    // Перевіряємо кімнати 
                     bool roomsMatch = offer.Rooms >= selectedBuyer.MinRooms;
 
-                    // 3. Перевіряємо район (має збігатися)
+                    // Перевіряємо район 
                     bool districtMatch = offer.District == selectedBuyer.DesiredDistrict;
 
-                    // 4. Перевіряємо тип житла (квартира чи дім)
+                    // Перевіряємо тип житла 
                     bool typeMatch = false;
                     if (selectedBuyer.WantsApartment && offer.PropertyType == "Квартира") typeMatch = true;
                     if (selectedBuyer.WantsHouse && offer.PropertyType == "Дім") typeMatch = true;
 
-                    // Якщо ВСІ умови виконуються — додаємо квартиру до результатів
+                    // Додаємо до списку варіант 
                     if (priceMatch && roomsMatch && districtMatch && typeMatch)
                     {
                         matchedOffers.Add(offer);
                     }
                 }
 
-                // ВИВЕДЕННЯ РЕЗУЛЬТАТІВ
+                // ВИВЕДЕННЯ РЕЗУЛЬТАТІВ НА ВКЛАДЦІ ПРОДАВЦІВ
                 if (matchedOffers.Count > 0)
                 {
-                    // Формуємо красивий текст з результатами
-                    string message = $"Для клієнта {selectedBuyer.ClientName} знайдено {matchedOffers.Count} варіант(ів):\n\n";
 
-                    foreach (Offer match in matchedOffers)
-                    {
-                        message += $"📍 {match.PropertyType}, {match.Address} | {match.Rooms} кімн. | {match.Price}$\n";
-                        message += $"📞 Продавець: {match.OwnerName} ({match.OwnerPhone})\n";
-                        message += $"----------------------------------\n";
-                    }
+                    tabControl1.SelectedIndex = 0;
 
-                    MessageBox.Show(message, "Успішний підбір", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Перетворюємо наш список знайдених квартир у формат для таблиці
+                    var resultList = new System.ComponentModel.BindingList<Offer>(matchedOffers);
+
+                    dataGridView1.DataSource = resultList;
+                    MessageBox.Show(
+                        $"Для клієнта {selectedBuyer.ClientName} знайдено {matchedOffers.Count} варіант(ів)!\n" +
+                        "Вони вже відображені у таблиці. Щоб побачити всі квартири, натисніть кнопку 'Скинути' у фільтрах.",
+                        "Успішний підбір",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -304,6 +277,107 @@ namespace RealStateAgency
             else
             {
                 MessageBox.Show("Будь ласка, оберіть покупця з таблиці перед пошуком.", "Увага", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // КНОПКА ДЛЯ ЗАСТОСУВАННЯ ФІЛЬТРІВ
+        private void btnApplyFilter_Click(object sender, EventArgs e)
+        {
+
+            var filteredList = new System.ComponentModel.BindingList<Offer>(); // Створення списку в який записуємо підходящі варіанти
+
+            foreach (var offer in offersList)
+            {
+                // Район
+                if (!string.IsNullOrEmpty(cmbFilterDistrict.Text) && offer.District != cmbFilterDistrict.Text)
+                    continue;
+
+                // Адреса
+                if (!string.IsNullOrEmpty(txtFilterAddress.Text) &&
+                    !offer.Address.ToLower().Contains(txtFilterAddress.Text.ToLower()))
+                    continue;
+
+                // Ціна
+                if (numFilterPriceFrom.Value > 0 && offer.Price < numFilterPriceFrom.Value) continue;
+                if (numFilterPriceTo.Value > 0 && offer.Price > numFilterPriceTo.Value) continue;
+
+                // Кімнати
+                if (numFilterRoomsFrom.Value > 0 && offer.Rooms < numFilterRoomsFrom.Value) continue;
+                if (numFilterRoomsTo.Value > 0 && offer.Rooms > numFilterRoomsTo.Value) continue;
+
+                // Площа
+                if (numFilterAreaFrom.Value > 0 && (decimal)offer.Area < numFilterAreaFrom.Value) continue;
+                if (numFilterAreaTo.Value > 0 && (decimal)offer.Area > numFilterAreaTo.Value) continue;
+
+                // Тип
+                bool wantsApt = chkFilterApartment.Checked;
+                bool wantsHouse = chkFilterHouse.Checked;
+
+                if (wantsApt || wantsHouse) 
+                {
+                    if (wantsApt && !wantsHouse && offer.PropertyType != "Квартира") continue;
+                    if (!wantsApt && wantsHouse && offer.PropertyType != "Дім") continue;
+                }
+
+
+                filteredList.Add(offer);
+            }
+
+
+            dataGridView1.DataSource = filteredList;
+        }
+
+
+        // КНОПКА ДЛЯ СКАСУВАННЯ ФІЛЬТРІВ 
+        private void btnResetFilter_Click(object sender, EventArgs e)
+        {
+            // Очищаємо всі поля
+            cmbFilterDistrict.SelectedIndex = -1;
+            cmbFilterDistrict.Text = "";
+            txtFilterAddress.Clear();
+
+            numFilterPriceFrom.Value = 0;
+            numFilterPriceTo.Value = 0;
+            numFilterRoomsFrom.Value = 0;
+            numFilterRoomsTo.Value = 0;
+            numFilterAreaFrom.Value = 0;
+            numFilterAreaTo.Value = 0;
+
+            chkFilterApartment.Checked = false;
+            chkFilterHouse.Checked = false;
+
+
+            dataGridView1.DataSource = offersList;
+        }
+
+        // МЕТОД ДЛЯ ДОВІДКИ
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                e.Handled = true; // Кажемо системі що ми самі обробили клавішу
+
+
+                if (tabControl1.SelectedIndex == 0)
+                {
+
+                    MessageBox.Show(
+                        "ДОВІДКА: База пропозицій\n\n" +
+                        "Тут ви можете додавати об'єкти нерухомості на продаж.\n" +
+                        "- Для пошуку використовуйте панель фільтрів праворуч та натискайте Enter.\n" +
+                        "- Щоб додати новий об'єкт, натисніть кнопку 'Додати'.",
+                        "Довідка - Пропозиції", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (tabControl1.SelectedIndex == 1)
+                {
+
+                    MessageBox.Show(
+                        "ДОВІДКА: База попиту\n\n" +
+                        "Тут зберігаються дані клієнтів, які шукають житло.\n" +
+                        "- Щоб знайти ідеальний варіант для клієнта, виділіть його в таблиці та натисніть 'Підібрати варіанти'.\n" +
+                        "- Для редагування анкети виділіть клієнта і натисніть 'Редагувати'.",
+                        "Довідка - Покупці", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
     }
